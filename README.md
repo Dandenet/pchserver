@@ -1,7 +1,7 @@
 # To start server
 `mvn spring-boot:run`
 
-# Signin
+# Sign in
 `POST <ip>:8080/api/auth/signin`
 ```
 {
@@ -10,7 +10,7 @@
 }
 ```
 
-# Signup
+# Sign up
 `POST <ip>:8080/api/auth/signup`
 ```
 {
@@ -36,6 +36,3 @@
     "quantity": "3"
 }
 ```
-
-
-s
