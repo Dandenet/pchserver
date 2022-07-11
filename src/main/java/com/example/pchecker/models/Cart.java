@@ -25,7 +25,11 @@ public class Cart {
     public Cart() {
     }
 
-
+    public Cart(User user, Product product, Integer quantity) {
+        this.user = user;
+        this.product = product;
+        this.quantity = quantity;
+    }
 
     public void setUser(User user) {
         this.user = user;
