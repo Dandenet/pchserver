@@ -31,13 +31,13 @@ public class CartController {
     }
 
     @GetMapping("/user/{username}")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public Iterable<Cart> getUserCart(@PathVariable String username) {
         return cartRepository.findByUserUsername(username);
     }
 
     @PostMapping("/user/{username}")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public Cart updateCart(@RequestBody UpdateCartRequest cartRequest, @PathVariable String username) {
         User user = userRepository.findByUsername(username)
                 .orElseThrow( () -> new RuntimeException( "Not Found User with username " + username ));
