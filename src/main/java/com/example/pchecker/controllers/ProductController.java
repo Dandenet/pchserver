@@ -1,6 +1,8 @@
 package com.example.pchecker.controllers;
 
+import com.example.pchecker.pojo.MessageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +21,12 @@ public class ProductController {
 
 
 	@GetMapping("/{code}")
-	public Product getProduct(@PathVariable String code) {
-		return productRepository.findByCode(code)
-				.orElseThrow(() -> new RuntimeException("Product Not Found with code " + code));
+	public ResponseEntity<?> getProduct(@PathVariable String code) {
+
+		if (productRepository.findByCode(code).isPresent())
+			return ResponseEntity.ok(productRepository.findByCode(code).get());
+
+		return ResponseEntity.badRequest().
+				body(new MessageResponse("Product Not Found with code " + code));
 	}
 }
